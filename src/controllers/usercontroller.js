@@ -1,3 +1,4 @@
-export const test = async (req, res) => {
+
+exports.allUsers = async (req, res) => {
   res.send("All users");
 };

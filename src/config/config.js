@@ -1,11 +1,12 @@
 const dotenv = require('dotenv');
+dotenv.config();
 
 if (process.env.NODE_ENVIRONMENT === 'prod') {
   dotenv.config();
 } else if (process.env.NODE_ENVIRONMENT === 'stag') {
   dotenv.config({ path: `${__dirname.split('/src')[0]}/.env.stg` });
 } else {
-  dotenv.config({ path: `${__dirname.split('/src')[0]}/.env.local.test` });
+  dotenv.config({ path: `${__dirname.split('/src')[0]}/.env` });
 }
 
 const x = {
