@@ -7,8 +7,9 @@ if (process.env.NODE_ENVIRONMENT === 'prod') {
 } else if (process.env.NODE_ENVIRONMENT === 'stag') {
   dotenv.config({ path: `${__dirname.split('/src')[0]}/.env.stg` });
 } else {
-  dotenv.config({ path: `${__dirname.split('/src')[0]}/.env.local.test` });
+  dotenv.config({ path: `${__dirname.split('/src')[0]}/.env` });
 }
+
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,

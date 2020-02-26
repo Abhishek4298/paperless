@@ -1,45 +1,46 @@
-
-"use strict";
+'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Admins = sequelize.define(
-    "Admins",
-    {
-      Fname: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      Lname: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      Email: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-
-      Role: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false
-      },
-
-      Password: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-
-      isActive: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false
-      },
-      contact: {
-        type: DataTypes.STRING,
-        allowNull: false
-      }
+let Admins = sequelize.define('Admins', {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
     },
-    {}
-  );
-
-  }
-  Admins.associate = function(models) {
-    // associations can be defined here
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    role: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 2
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    isActive: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    },
+    contact: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+  }, {});
+  Admins.associate = function (models) {
+    Admins.hasMany(models.employees,{
+      foreignKey:'id'
+    });
   };
+  return Admins;
+};

@@ -8,7 +8,7 @@ if (process.env.NODE_ENVIRONMENT === 'prod') {
 } else {
   dotenv.config({ path: `${__dirname.split('/src')[0]}/.env` });
 }
-
+console.log(process.env.DB_NAME,process.env.DB_PASS,process.env.DB_USER)
 const x = {
   development: {
     username: process.env.DB_USER,
